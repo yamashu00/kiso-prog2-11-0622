@@ -17,10 +17,7 @@ typedef struct {
  * 成功したら 1、失敗したら 0 を返す。（実装済み、そのまま使う）
  */
 int parseSensorLine(const char *line, SensorData *out) {
-    return sscanf(line, "%31[^,],%d,%f",
-                  out->location,
-                  &out->temperature,
-                  &out->humidity) == 3;
+    return sscanf(line, "%31[^,],%d,%f",out->location,&out->temperature,&out->humidity) == 3;
 }
 
 int main(void) {
@@ -52,7 +49,7 @@ int main(void) {
              *
              *   引数: data.location, data.temperature, data.humidity
              */
-            printf("まだ表示できていません\n"); /* TODO 1: この行を直す */
+            printf("%s: %dC / %.1f%%\n", data.location, data.temperature, data.humidity);
 
             count++;
         }
@@ -65,7 +62,7 @@ int main(void) {
      *   printf と count を使って1行書く。
      */
     /* TODO 2: ここに printf を1行書く */
-
+    printf("合計:%d件\n",count);
     fclose(fp);
     fp = NULL;
     return 0;
