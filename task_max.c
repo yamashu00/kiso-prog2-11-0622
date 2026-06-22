@@ -34,6 +34,10 @@ int main(void) {
     while (fgets(line, sizeof(line), fp) != NULL) {
         if (parseSensorLine(line, &data)) {
 
+            if(found == 0 || data.temperature > maxData.temperature){
+                maxData = data;
+                found = 1;
+            }
             /* TODO 1: data.temperature が最大かどうか判定して maxData を更新する
              *
              *   考え方:
@@ -49,6 +53,12 @@ int main(void) {
     fclose(fp);
     fp = NULL;
 
+
+    if(found == 1){
+        printf("最高気温: %s / %d°C / %f%%",maxData.location, maxData.temperature, maxData.humidity);
+    }else if(found == 0){
+        printf("データがありません\n");
+    }
     /* TODO 2: 結果を表示する
      *   found が 1 なら → "最高気温: ○○ / ○○°C / ○○%" を表示
      *   found が 0 なら → "データがありません" を表示                          */

@@ -10,6 +10,7 @@ typedef struct {
     float humidity;
 } SensorData;
 
+
 /* CSV の1行を SensorData に変換する。成功=1 / 失敗=0 */
 int parseSensorLine(const char *line, SensorData *out) {
     return sscanf(line, "%31[^,],%d,%f",

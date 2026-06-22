@@ -39,6 +39,11 @@ int main(void) {
     while (fgets(line, sizeof(line), fp) != NULL) {
         if (parseSensorLine(line, &data)) {
 
+            printf("%s: %dC / %.1f%%\n",
+               data.location,
+               data.temperature,
+               data.humidity);
+
             /*
              * TODO 1: この printf を正しい表示に直す。
              *
@@ -52,12 +57,12 @@ int main(void) {
              *
              *   引数: data.location, data.temperature, data.humidity
              */
-            printf("まだ表示できていません\n"); /* TODO 1: この行を直す */
+            /* TODO 1: この行を直す */
 
             count++;
         }
     }
-
+    printf("合計: %d 件\n", count);
     /*
      * TODO 2: ループが終わったら合計件数を表示する。
      *   表示したい例: "合計: 5 件"
