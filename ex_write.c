@@ -29,8 +29,8 @@ typedef struct {
 void writeSensorData(FILE *fp, SensorData data) {
     fprintf(fp, "%s,%d,%.1f\n",
             data.location,
-            0,       /* TODO 1: data.temperature に直す */
-            0.0f);   /* TODO 1: data.humidity に直す   */
+            data.temperature,
+            data.humidity);
 }
 
 int main(void) {
@@ -43,7 +43,7 @@ int main(void) {
      *
      *   今回は毎回新しく書き直したい -> どれが正しい？
      */
-    FILE *fp = fopen("sensor_ex.csv", "r"); /* TODO 2: "r" を正しいモードに直す */
+    FILE *fp = fopen("sensor_ex.csv", "w");
     if (fp == NULL) {
         fprintf(stderr, "ファイルを開けませんでした\n");
         return 1;
@@ -54,6 +54,7 @@ int main(void) {
         {"体育館", 31, 75.0},
         {"図書室", 20, 50.0},
         {"職員室", 26, 62.0},
+        {"屋上", 33, 80.0},
         /* TODO 3: ここに自分でデータを1件追加する。場所・気温・湿度は自由。
          *   書き方の例: {"屋上", 33, 80.0},                                */
     };
