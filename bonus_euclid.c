@@ -54,10 +54,17 @@
 int main(void) {
     int a = 252;
     int b = 105;
+    int originalA = a;
+    int originalB = b;
 
-    /* ここに実装する */
+    while (b != 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
 
-    /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    int result = a;
+    printf("GCD(%d, %d) = %d\n", originalA, originalB, result);
 
     return 0;
 }
