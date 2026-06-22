@@ -45,18 +45,38 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 宮寺宏幸
 
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     int data[10] = {38, 12, 74, 5, 91, 23, 47, 60, 8, 33};
     int n = 10;
 
-    /* ここに実装する */
+    for (int i = 0; i < n - 1; i++)
+    {
+        int minIndex = i;
+
+        for (int j = i + 1; j < n; j++)
+        {
+            if (data[j] < data[minIndex])
+            {
+                minIndex = j;
+            }
+        }
+
+        if (minIndex != i)
+        {
+            int temp = data[i];
+            data[i] = data[minIndex];
+            data[minIndex] = temp;
+        }
+    }
 
     /* 結果を表示する */
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("%d ", data[i]);
     }
     printf("\n");
