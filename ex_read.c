@@ -52,7 +52,10 @@ int main(void) {
              *
              *   引数: data.location, data.temperature, data.humidity
              */
-            printf("まだ表示できていません\n"); /* TODO 1: この行を直す */
+            printf("%s: %dC / %.1f%%\n",
+                data.location,
+                data.temperature,
+                data.humidity);  /* TODO 1: この行を直す */
 
             count++;
         }
@@ -64,9 +67,16 @@ int main(void) {
      *   変数 count に読み込んだ件数が入っている。
      *   printf と count を使って1行書く。
      */
-    /* TODO 2: ここに printf を1行書く */
+    printf("合計: %d 件\n", count); /* TODO 2: ここに printf を1行書く */
 
     fclose(fp);
     fp = NULL;
     return 0;
 }
+
+/*
+内容
+sensor_ex.csv を1行ずつ読み込み、
+parseSensorLine() で SensorData 構造体に変換して表示した。
+また、読み込んだ件数を count で数え、最後に合計件数を表示した。
+*/

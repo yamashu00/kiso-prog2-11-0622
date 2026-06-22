@@ -12,7 +12,7 @@ typedef struct {
 
 /* CSV の1行を SensorData に変換する。成功=1 / 失敗=0 */
 int parseSensorLine(const char *line, SensorData *out) {
-    return sscanf(line, "%31[^,],%d,%f",
+    return sscanf(line, "%31[^,],%d,%f", //"%31[^,]"→, が出るまで文字列を読む
                   out->location,       /* char 配列なので & 不要 */
                   &out->temperature,   /* int なので & が必要 */
                   &out->humidity)      /* float なので & が必要 */
@@ -41,3 +41,16 @@ int main(void) {
     fp = NULL;
     return 0;
 }
+
+/*
+内容
+sensor.csv を1行ずつ読み込み、
+sscanf() を使ってCSVデータを SensorData 構造体に変換し、
+その内容を表示するプログラム
+
+このプログラムの目的
+1. sensor.csv を開く
+2. 1行ずつ読む（fgets）
+3. CSVを構造体に変換する（sscanf）
+4. 構造体の内容を表示する
+*/

@@ -50,7 +50,33 @@
 
 int main(void) {
 
-    /* ここに実装する */
+    int is_prime[1001];
+
+    /* まず全部を素数候補にする */
+    for (int i = 0; i <= 1000; i++) {
+        is_prime[i] = 1;
+    }
+
+    /* 0と1は素数ではない */
+    is_prime[0] = 0;
+    is_prime[1] = 0;
+
+    /* 2〜√1000 まで調べる */
+    for (int i = 2; i * i <= 1000; i++) {
+        if (is_prime[i] == 1) {
+            for (int j = i * i; j <= 1000; j += i) {
+                is_prime[j] = 0;
+            }
+        }
+    }
+
+    /* 素数だけ表示する */
+    for (int i = 2; i <= 1000; i++) {
+        if (is_prime[i] == 1) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
 
     return 0;
 }

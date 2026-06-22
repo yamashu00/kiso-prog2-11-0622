@@ -35,6 +35,6 @@ int main(void) {
     fp = NULL;
 
     printf("sensor.csv に書き込みました\n");
-    printf("cat sensor.csv で中身を確認してみよう\n");
+    printf("cat sensor.csv で中身を確認してみよう\n"); //cat ファイル名はファイルの中身を表示するコマンド
     return 0;
 }

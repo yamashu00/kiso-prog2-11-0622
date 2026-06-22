@@ -30,7 +30,7 @@
  *   「大きい」なら次は 250（1〜499の中央）
  *   「小さい」なら次は 750（501〜1000の中央）
  *   → 毎回、候補が半分に絞られる
- *   最悪のケース: 何回？
+ *   最悪のケース: 10回
  *
  * パターンC: 数学的に考える
  *   1000個の候補を毎回半分に絞ると...
@@ -44,14 +44,36 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 中島 桜
 
 #include <stdio.h>
 
 int main(void) {
-    int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+    int answer = 233;  /* ← 好きな値に変えてよい（1〜1000） */
 
-    /* ここに実装する */
+    int low = 1;
+    int high = 1000;
+    int count = 0;
+
+    while (low <= high) {
+        int guess = (low + high) / 2;
+        count++;
+
+        printf("予想: %d → ", guess);
+
+        if (guess == answer) {
+            printf("正解！\n");
+            break;
+        } else if (guess > answer) {
+            printf("大きい\n");
+            high = guess - 1;
+        } else {
+            printf("小さい\n");
+            low = guess + 1;
+        }
+    }
+
+    printf("%d回で当てました\n", count);
 
     return 0;
 }
