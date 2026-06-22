@@ -47,17 +47,23 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 佐藤蒼介
 
 #include <stdio.h>
 
 int main(void) {
     int a = 252;
     int b = 105;
+    int x = a;
+    int y = b;
 
-    /* ここに実装する */
+    while (y != 0) {
+        int r = x % y;
+        x = y;
+        y = r;
+    }
 
-    /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    printf("GCD(%d, %d) = %d\n", a, b, x);
 
     return 0;
 }
