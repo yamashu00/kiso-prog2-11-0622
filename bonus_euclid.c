@@ -47,17 +47,22 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 後上彰吾
 
 #include <stdio.h>
 
 int main(void) {
     int a = 252;
     int b = 105;
+    int result = 1;
+    
+    for(int sum = 1; sum < b; sum++){
+        if(a % sum == 0 && b % sum == 0){
+            result = sum;
+        }
+    }
 
-    /* ここに実装する */
-
-    /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    printf("GCD(%d, %d) = %d\n", 252, 105, result);
 
     return 0;
 }

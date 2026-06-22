@@ -44,14 +44,27 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 後上彰吾
 
 #include <stdio.h>
 
 int main(void) {
-    int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+    int answer = 462;
+    int inputnum;
+    while(inputnum != answer){
+        printf("数字を入力してください:");
+        scanf("%d", &inputnum);
 
-    /* ここに実装する */
+        if(inputnum > answer){
+            printf("入力した数字の方が大きい\n");
+        } else if(inputnum < answer) {
+            printf("入力した数字の方が小さい\n");
+        } else{
+            break;
+        }
+    }
+    
+    printf("正解!\n");
 
     return 0;
 }
