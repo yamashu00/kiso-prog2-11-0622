@@ -11,14 +11,23 @@ typedef struct {
 
 int main(void) {
     FILE *fp = fopen("sensor.csv", "w");
-    /* バグ1: fopen が失敗したとき（fp == NULL のとき）の処理がない */
+
+    /* バグ1: fopen が失敗したときの処理 */
+    if (fp == NULL) {
+        printf("ファイルを開けませんでした。\n");
+        return 1;
+    }
 
     SensorData data = {"教室", 25, 60.5};
 
-    /* バグ2: humidity は float なのに %d を使っている */
-    fprintf(fp, "%s,%d,%d\n", data.location, data.temperature, data.humidity);
+    /* バグ2: humidity は float なので %f を使う */
+    fprintf(fp, "%s,%d,%.1f\n",
+            data.location,
+            data.temperature,
+            data.humidity);
 
-    /* バグ3: fclose がない（ファイルを閉じていない） */
+    /* バグ3: ファイルを閉じる */
+    fclose(fp);
 
     printf("書き込み完了\n");
     return 0;
