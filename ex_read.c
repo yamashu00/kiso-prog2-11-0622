@@ -52,7 +52,7 @@ int main(void) {
              *
              *   引数: data.location, data.temperature, data.humidity
              */
-            printf("まだ表示できていません\n"); /* TODO 1: この行を直す */
+            printf("実験室: %s: %dC / %.1f%%\n", data.location, data.temperature, data.humidity); /* TODO 1: この行を直す */
 
             count++;
         }
@@ -65,7 +65,7 @@ int main(void) {
      *   printf と count を使って1行書く。
      */
     /* TODO 2: ここに printf を1行書く */
-
+    printf("合計: %d件", count);
     fclose(fp);
     fp = NULL;
     return 0;
