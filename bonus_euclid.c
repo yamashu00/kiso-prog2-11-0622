@@ -47,7 +47,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 高瀬喜糸
 
 #include <stdio.h>
 
@@ -56,8 +56,27 @@ int main(void) {
     int b = 105;
 
     /* ここに実装する */
+    /* パターンA: 全探索 */
+    int gcd = 1;
+    int min;
+    
+    if (a < b) {
+        min = a;
+    } else {
+        min = b;
+    }
+    // int min = (a < b) ? a : b;
+
+    for (int i = 1; i <= min; i++) {
+        if (a % i == 0 && b % i == 0) {
+            gcd = i;
+        }
+    }
+
+    int result = gcd;
 
     /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    printf("GCD(%d, %d) = %d\n", 252, 105, result);
 
     return 0;
 }
