@@ -44,14 +44,30 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 宇都宮來美
 
 #include <stdio.h>
 
 int main(void) {
     int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+    int pre = 0;
+    int count = 0;
 
-    /* ここに実装する */
+    while(answer != pre){
+        printf("予想: ");
+        scanf("%d", &pre);
+
+        if(pre > answer){
+            printf("大きい\n");
+            count++;
+        }else{
+            printf("小さい\n");
+            count++;
+        }
+    }
+
+    printf("正解！　%d回で当てました。\n", count);
+    
 
     return 0;
 }
