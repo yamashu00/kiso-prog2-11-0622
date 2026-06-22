@@ -43,7 +43,7 @@ int main(void) {
      *
      *   今回は毎回新しく書き直したい -> どれが正しい？
      */
-    FILE *fp = fopen("sensor_ex.csv", "r"); /* TODO 2: "r" を正しいモードに直す */
+    FILE *fp = fopen("sensor_ex.csv", "w"); /* TODO 2: "r" を正しいモードに直す */
     if (fp == NULL) {
         fprintf(stderr, "ファイルを開けませんでした\n");
         return 1;
