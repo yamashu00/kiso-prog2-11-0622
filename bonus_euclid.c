@@ -47,17 +47,28 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 冨山そらの
 
 #include <stdio.h>
 
-int main(void) {
+#include <stdio.h>
+
+int main(void)
+{
     int a = 252;
     int b = 105;
+    int result;
 
-    /* ここに実装する */
+    while (b != 0)
+    {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
 
-    /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    result = a;
+
+    printf("GCD(%d, %d) = %d\n", 252, 105, result);
 
     return 0;
 }

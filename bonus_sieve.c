@@ -44,13 +44,43 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 冨山そらの
 
 #include <stdio.h>
 
-int main(void) {
+int main(void)
+{
+    int is_prime[1001];
 
-    /* ここに実装する */
+    for (int i = 0; i <= 1000; i++)
+    {
+        is_prime[i] = 1;
+    }
+
+    // 0と1は素数ではない
+    is_prime[0] = 0;
+    is_prime[1] = 0;
+
+    for (int i = 2; i * i <= 1000; i++)
+    {
+        if (is_prime[i] == 1)
+        {
+            for (int j = i * i; j <= 1000; j += i)
+            {
+                is_prime[j] = 0;
+            }
+        }
+    }
+
+    for (int i = 2; i <= 1000; i++)
+    {
+        if (is_prime[i] == 1)
+        {
+            printf("%d ", i);
+        }
+    }
+
+    printf("\n");
 
     return 0;
 }
