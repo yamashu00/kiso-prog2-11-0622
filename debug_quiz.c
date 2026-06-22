@@ -16,7 +16,7 @@ int main(void) {
     SensorData data = {"教室", 25, 60.5};
 
     /* バグ2: humidity は float なのに %d を使っている */
-    fprintf(fp, "%s,%d,%d\n", data.location, data.temperature, data.humidity);
+    fprintf(fp, "%s,%d,%f\n", data.location, data.temperature, data.humidity);
 
     /* バグ3: fclose がない（ファイルを閉じていない） */
 
