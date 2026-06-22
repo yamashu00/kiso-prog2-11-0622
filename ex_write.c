@@ -1,8 +1,3 @@
-/* ex_write.c -- Enshuu 1: Kozo wo CSV ni kakidasu (yaku 10 pun) */
-/* 演習①: 構造体を CSV に書き出す（約10分）                       */
-/* TODO を埋めてコンパイル・実行してみよう。                       */
-/* 今の状態でもコンパイルは通る。実行すると意図しない動作になる。  */
-
 #include <stdio.h>
 #include <string.h>
 
@@ -12,38 +7,15 @@ typedef struct {
     float humidity;
 } SensorData;
 
-/*
- * TODO 1: fprintf の引数を直して、構造体を CSV の1行として書き出す。
- *
- *   書き出したい形式の例:
- *     実験室,23,58.0
- *     体育館,31,75.0
- *
- *   フォーマット指定子の対応:
- *     文字列 -> %s    整数 -> %d    小数 -> %.1f
- *
- *   data のメンバ: data.location  data.temperature  data.humidity
- *
- *   直すべき箇所: 2行目と3行目の引数（0 と 0.0f を正しいメンバ名に変える）
- */
 void writeSensorData(FILE *fp, SensorData data) {
     fprintf(fp, "%s,%d,%.1f\n",
             data.location,
-            0,       /* TODO 1: data.temperature に直す */
-            0.0f);   /* TODO 1: data.humidity に直す   */
+            data.temperature,
+            data.humidity);
 }
 
 int main(void) {
-    /*
-     * TODO 2: fopen のモードを "r" から正しいモードに直す。
-     *
-     *   "r" -> 読み込み専用（書き込めない）
-     *   "w" -> 新規書き込み（ファイルがあれば上書き）
-     *   "a" -> 追記（ファイルの末尾に足す）
-     *
-     *   今回は毎回新しく書き直したい -> どれが正しい？
-     */
-    FILE *fp = fopen("sensor_ex.csv", "r"); /* TODO 2: "r" を正しいモードに直す */
+    FILE *fp = fopen("sensor_ex.csv", "w");
     if (fp == NULL) {
         fprintf(stderr, "ファイルを開けませんでした\n");
         return 1;
@@ -54,8 +26,7 @@ int main(void) {
         {"体育館", 31, 75.0},
         {"図書室", 20, 50.0},
         {"職員室", 26, 62.0},
-        /* TODO 3: ここに自分でデータを1件追加する。場所・気温・湿度は自由。
-         *   書き方の例: {"屋上", 33, 80.0},                                */
+        {"大講堂", 25, 67.5}
     };
     int n = sizeof(records) / sizeof(records[0]);
 
