@@ -45,7 +45,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 鉄川晴麻
 
 #include <stdio.h>
 
@@ -54,6 +54,22 @@ int main(void) {
     int n = 10;
 
     /* ここに実装する */
+    int origin[10];
+    int find;
+    for(int i = 0; i < 10; i++){
+        origin[i] = data[i];
+    }
+    for(int i = 0; i < n; i++){
+        int minData = 100;
+        for(int j = 0; j < n; j++){
+            if(origin[j] < minData){
+                minData = origin[j];
+                find = j;
+            }
+        }
+        data[i] = minData;
+        origin[find] = 100;
+    }
 
     /* 結果を表示する */
     for (int i = 0; i < n; i++) {
