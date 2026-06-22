@@ -44,14 +44,44 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
-
 #include <stdio.h>
 
 int main(void) {
-    int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+    int answer = 737;
 
-    /* ここに実装する */
+    int low = 1;
+    int high = 1000;
+    int guess;
+    int count = 0;
+
+    while (low <= high) {
+        guess = (low + high) / 2;
+        count++;
+
+        printf("予想: %d → ", guess);
+
+        if (guess == answer) {
+            printf("正解！\n");
+            break;
+        } else if (guess > answer) {
+            printf("大きい\n");
+            high = guess - 1;
+        } else {
+            printf("小さい\n");
+            low = guess + 1;
+        }
+    }
+
+    printf("%d回で当てました\n", count);
+
+    /*
+     * 考察:
+     * 二分探索では、毎回候補の数を半分に減らしていく。
+     * 1000 → 500 → 250 → 125 → 63 → 32 → 16 → 8 → 4 → 2 → 1
+     * となるので、最悪でも10回で答えにたどり着ける。
+     * 1から順番に探す線形探索では最悪1000回かかるため、
+     * 二分探索の方がとても効率がよい。
+     */
 
     return 0;
 }
