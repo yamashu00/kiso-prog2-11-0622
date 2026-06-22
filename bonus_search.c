@@ -41,17 +41,79 @@
  * パターンD: answer を変えて試す
  *   answer = 1, 500, 1000 など「最悪のケース」になる値はどれか。
  *   コメントに考察を書くこと。
- * ─────────────────────────────────────────────────────────
+ *
  */
 
-// 自分の名前: ________________
+// 自分の名前: 南河直志
+/*最悪の場合の回数は10回。そしてそうなるケースの個数は489個らしい。なんでこの数になるのかは知らんけど、プログラムしてそうなるのだからそうなのだろう。
+偶数が多いとはいえ、奇数もちょこちょこ入ってるのが不思議。
+除外される偶数は、500,250とか？あと32みたいなのもある。規則性はわからん。32~64の間は偶数がないな。126~152の間も同様。
+ */
 
 #include <stdio.h>
 
-int main(void) {
-    int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+int main(void)
+{
+    int kaisu = 1;
+    int saiaku[1000];
+    int saiaku_count = 0;
+    int answer;
+    int i;
+    int count = 0;
+    int low = 1;
+    int high = 1000;
+    while (kaisu <= 1000) // 最悪のやつを求めるプログラム
+    {
+        answer = kaisu;
+        i = 500;
+        count = 0;
+        low = 1;
+        high = 1000;
+        do
+        {
+            i = (low + high) / 2;
+            count++;
 
-    /* ここに実装する */
+            if (i < answer)
+            {
+                low = i + 1;
+            }
+            else if (i > answer)
+            {
+                high = i - 1;
+            }
 
+        } while (i != answer);
+        if (count == 10)
+        {
+            saiaku[saiaku_count] = answer;
+            saiaku_count++;
+        }
+        kaisu++;
+    }
+
+    printf("個数:%d\n", saiaku_count);
+    for (i = 0; i < saiaku_count; i++)
+    {
+        printf("最悪のケース: %d\n", saiaku[i]);
+    }
     return 0;
 }
+/* ここに実装する
+do
+{
+count++;
+printf("予想を入力:");
+scanf("%d", &i);
+if (i != answer && i < answer)
+{
+    printf("予想:%d 大きい\n", i);
+}
+else if (i != answer && i > answer)
+{
+    printf("予想:%d 小さい\n", i);
+}
+} while (i != answer);
+printf("正解！ %d回で正解しました!\n", count);
+printf("正解は%dでした\n", answer);
+return 0;*/
