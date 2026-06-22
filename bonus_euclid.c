@@ -47,7 +47,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 宮本もえか
 
 #include <stdio.h>
 
@@ -56,7 +56,18 @@ int main(void) {
     int b = 105;
 
     /* ここに実装する */
+    int originalA = a;
+    int originalB = b;
 
+    while (b != 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
+
+    int result = a;
+
+    printf("GCD(%d, %d) = %d\n", originalA, originalB, result);
     /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
 
     return 0;
