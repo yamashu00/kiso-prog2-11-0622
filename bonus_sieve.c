@@ -51,6 +51,7 @@
 int main(void) {
 
     /* ここに実装する */
+    int prime[1001];
 
     return 0;
 }
