@@ -44,14 +44,32 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 山西栞奈
 
 #include <stdio.h>
 
 int main(void) {
-    int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+    int answer = 999;  /* ← 好きな値に変えてよい（1〜1000） */
 
     /* ここに実装する */
+    int low = 1;
+    int high = 1000;
+    int count = 0;
+    int gess = 0;
 
+    do{
+        gess = (low + high) / 2;
+        count++;
+        if(gess > answer){
+            printf("大きい");
+            high = gess - 1 ;
+        }else{
+            printf("小さい");
+            low = gess + 1;
+        }
+    }while (gess != answer);
+    printf("\n正解!%d回で当てました\n", count);
+    
+    
     return 0;
 }
