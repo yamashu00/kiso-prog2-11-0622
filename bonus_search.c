@@ -44,29 +44,36 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 宮寺宏幸
 
 #include <stdio.h>
 
-int main(void) {
-    int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+int main(void)
+{
+    int answer = 737; /* ← 好きな値に変えてよい（1〜1000） */
 
     int low = 1;
     int high = 1000;
     int count = 0;
 
-    while (low <= high) {
+    while (low <= high)
+    {
         int guess = (low + high) / 2;
         count++;
 
-        if (guess == answer) {
+        if (guess == answer)
+        {
             printf("予想: %d -> 正解\n", guess);
             printf("正解！ %d回で当てました\n", count);
             break;
-        } else if (guess > answer) {
+        }
+        else if (guess > answer)
+        {
             printf("予想: %d -> 大きい\n", guess);
             high = guess - 1;
-        } else {
+        }
+        else
+        {
             printf("予想: %d -> 小さい\n", guess);
             low = guess + 1;
         }
