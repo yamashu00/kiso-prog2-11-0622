@@ -5,23 +5,27 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
-    char  location[32];
-    int   temperature;
+typedef struct
+{
+    char location[32];
+    int temperature;
     float humidity;
 } SensorData;
 
 /* parseSensorLine は完成済み — そのまま使ってよい */
-int parseSensorLine(const char *line, SensorData *out) {
+int parseSensorLine(const char *line, SensorData *out)
+{
     return sscanf(line, "%31[^,],%d,%f",
                   out->location,
                   &out->temperature,
                   &out->humidity) == 3;
 }
 
-int main(void) {
+int main(void)
+{
     FILE *fp = fopen("sensor_ex.csv", "r");
-    if (fp == NULL) {
+    if (fp == NULL)
+    {
         fprintf(stderr, "sensor_ex.csv が見つかりません（先に ex_write を実行してください）\n");
         return 1;
     }
@@ -31,8 +35,10 @@ int main(void) {
     SensorData maxData;
     int found = 0;
 
-    while (fgets(line, sizeof(line), fp) != NULL) {
-        if (parseSensorLine(line, &data)) {
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+        if (parseSensorLine(line, &data))
+        {
 
             /* TODO 1: data.temperature が最大かどうか判定して maxData を更新する
              *
@@ -42,7 +48,11 @@ int main(void) {
              *
              *   使う変数: found, data, maxData
              *   maxData = data;  で構造体をまるごとコピーできる               */
-
+            if (data.temperature > maxData.temperature || found == 0)
+            {
+                maxData = data;
+                found = 1;
+            }
         }
     }
 
@@ -52,6 +62,14 @@ int main(void) {
     /* TODO 2: 結果を表示する
      *   found が 1 なら → "最高気温: ○○ / ○○°C / ○○%" を表示
      *   found が 0 なら → "データがありません" を表示                          */
+    if (found == 1)
+    {
+        printf("最高気温: %s / %d°C / %.1f\n", maxData.location, maxData.temperature, maxData.humidity);
+    }
+    else if (found == 0)
+    {
+        printf("データがありません");
+    }
 
     return 0;
 }

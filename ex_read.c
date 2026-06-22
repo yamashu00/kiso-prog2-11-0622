@@ -6,9 +6,10 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
-    char  location[32];
-    int   temperature;
+typedef struct
+{
+    char location[32];
+    int temperature;
     float humidity;
 } SensorData;
 
@@ -16,16 +17,20 @@ typedef struct {
  * parseSensorLine: CSV の1行を SensorData 構造体に変換する。
  * 成功したら 1、失敗したら 0 を返す。（実装済み、そのまま使う）
  */
-int parseSensorLine(const char *line, SensorData *out) {
+
+int parseSensorLine(const char *line, SensorData *out)
+{
     return sscanf(line, "%31[^,],%d,%f",
                   out->location,
                   &out->temperature,
                   &out->humidity) == 3;
 }
 
-int main(void) {
+int main(void)
+{
     FILE *fp = fopen("sensor_ex.csv", "r");
-    if (fp == NULL) {
+    if (fp == NULL)
+    {
         fprintf(stderr, "sensor_ex.csv が見つかりません（先に ex_write を実行してください）\n");
         return 1;
     }
@@ -36,8 +41,10 @@ int main(void) {
 
     printf("=== sensor_ex.csv の内容 ===\n");
 
-    while (fgets(line, sizeof(line), fp) != NULL) {
-        if (parseSensorLine(line, &data)) {
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+        if (parseSensorLine(line, &data))
+        {
 
             /*
              * TODO 1: この printf を正しい表示に直す。
@@ -52,7 +59,7 @@ int main(void) {
              *
              *   引数: data.location, data.temperature, data.humidity
              */
-            printf("まだ表示できていません\n"); /* TODO 1: この行を直す */
+            printf("%s: %dC / %.1f%%\n", data.location, data.temperature, data.humidity); /* TODO 1: この行を直す */
 
             count++;
         }
@@ -65,6 +72,7 @@ int main(void) {
      *   printf と count を使って1行書く。
      */
     /* TODO 2: ここに printf を1行書く */
+    printf("合計: %d 件\n", count);
 
     fclose(fp);
     fp = NULL;
