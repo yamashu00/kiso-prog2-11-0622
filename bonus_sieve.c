@@ -44,13 +44,42 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 高瀬喜糸
 
 #include <stdio.h>
 
 int main(void) {
 
     /* ここに実装する */
+    /* パターンC: エラトステネスの篩 */
+    int is_prime[1001];
+
+    for (int i = 0; i <= 1000; i++) {
+        is_prime[i] = 1;
+    }
+
+    is_prime[0] = 0;
+    is_prime[1] = 0;
+
+    for (int i = 2; i * i <= 1000; i++) {
+        if (is_prime[i] == 1) {
+            for (int j = i * i; j <= 1000; j += i) {
+                is_prime[j] = 0;
+            }
+
+        }
+
+    }
+
+    printf("1～1000の素数:\n");
+
+    for (int i = 2; i <= 1000; i++) {
+        if (is_prime[i] == 1) {
+            printf("%d ", i);
+        }
+    }
+
+    printf("\n");
 
     return 0;
 }
