@@ -43,6 +43,13 @@ int main(void) {
              *   使う変数: found, data, maxData
              *   maxData = data;  で構造体をまるごとコピーできる               */
 
+             if (found == 0) {
+                maxData = data;
+                found = 1;
+            }
+            else if (data.temperature > maxData.temperature) {
+                maxData = data;
+            }
         }
     }
 
@@ -52,6 +59,21 @@ int main(void) {
     /* TODO 2: 結果を表示する
      *   found が 1 なら → "最高気温: ○○ / ○○°C / ○○%" を表示
      *   found が 0 なら → "データがありません" を表示                          */
+    if (found == 1) {
+        printf("最高気温: %s / %d°C / %.1f%%\n",
+               maxData.location,
+               maxData.temperature,
+               maxData.humidity);
+    } else {
+        printf("データがありません\n");
+    }
 
     return 0;
 }
+
+/*
+最高湿度
+else if (data.humidity > maxData.humidity) {
+    maxData = data;
+}
+*/

@@ -55,9 +55,19 @@ int main(void) {
     int a = 252;
     int b = 105;
 
-    /* ここに実装する */
+    while (b != 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
 
-    /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    printf("GCD(%d, %d) = %d\n", 252, 105, a);
 
     return 0;
 }
+
+/*
+ユークリッドの互除法を使った。
+a % b の余りを求め、a=b、b=余り を繰り返す。
+余りが0になったときの a が最大公約数になる。
+*/

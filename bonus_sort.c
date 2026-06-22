@@ -45,7 +45,7 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 中島桜
 
 #include <stdio.h>
 
@@ -53,7 +53,19 @@ int main(void) {
     int data[10] = {38, 12, 74, 5, 91, 23, 47, 60, 8, 33};
     int n = 10;
 
-    /* ここに実装する */
+    for (int i = 0; i < n - 1; i++) {
+        int min = i;
+    
+        for (int j = i + 1; j < n; j++) {
+            if (data[j] < data[min]) {
+                min = j;
+            }
+        }
+    
+        int temp = data[i];
+        data[i] = data[min];
+        data[min] = temp;
+    }
 
     /* 結果を表示する */
     for (int i = 0; i < n; i++) {
