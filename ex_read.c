@@ -41,18 +41,11 @@ int main(void) {
 
             /*
              * TODO 1: この printf を正しい表示に直す。
-             *
-             *   表示したい例:  実験室: 23C / 58.0%
-             *
-             *   フォーマット文字列: "%s: %dC / %.1f%%\n"
-             *     %s    -> 文字列
-             *     %d    -> 整数
-             *     %.1f  -> 小数点1桁の実数
-             *     %%    -> % を1文字表示するためのエスケープ
-             *
-             *   引数: data.location, data.temperature, data.humidity
              */
-            printf("まだ表示できていません\n"); /* TODO 1: この行を直す */
+            printf("%s: %dC / %.1f%%\n",
+                   data.location,
+                   data.temperature,
+                   data.humidity);
 
             count++;
         }
@@ -60,11 +53,8 @@ int main(void) {
 
     /*
      * TODO 2: ループが終わったら合計件数を表示する。
-     *   表示したい例: "合計: 5 件"
-     *   変数 count に読み込んだ件数が入っている。
-     *   printf と count を使って1行書く。
      */
-    /* TODO 2: ここに printf を1行書く */
+    printf("合計: %d 件\n", count);
 
     fclose(fp);
     fp = NULL;
