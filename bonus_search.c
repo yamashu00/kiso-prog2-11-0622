@@ -47,11 +47,36 @@
 // 自分の名前: ________________
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main(void) {
-    int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+    srand((unsigned int)time(NULL));
 
-    /* ここに実装する */
+    int answer = rand() % 1000 + 1;
+
+    int low = 1;
+    int high = 1000;
+    int count = 0;
+
+    while (low <= high) {
+        int guess = (low + high) / 2;
+        count++;
+
+        printf("予想: %d → ", guess);
+
+        if (guess < answer) {
+            printf("小さい\n");
+            low = guess + 1;
+        } else if (guess > answer) {
+            printf("大きい\n");
+            high = guess - 1;
+        } else {
+            printf("正解！ %d回で当てました\n", count);
+            break;
+        }
+    }
+
 
     return 0;
 }
