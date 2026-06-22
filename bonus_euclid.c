@@ -47,7 +47,11 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+/*
+ * ★ ボーナス問題 — ユークリッドの互除法
+ */
+
+// 自分の名前: 長坂歩
 
 #include <stdio.h>
 
@@ -55,9 +59,18 @@ int main(void) {
     int a = 252;
     int b = 105;
 
-    /* ここに実装する */
+    int org_a = a;
+    int org_b = b;
 
-    /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    while (b != 0) {
+        int r = a % b;
+        a = b;
+        b = r;
+    }
+    
+    int result = a;
+
+    printf("GCD(%d, %d) = %d\n", org_a, org_b, result);
 
     return 0;
 }
