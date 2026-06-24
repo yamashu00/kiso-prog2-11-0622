@@ -54,7 +54,17 @@ int main(void) {
     int n = 10;
 
     /* ここに実装する */
-
+        for(int i = 0; i < n - 1; i++){
+            int min_index = i;
+            for(int j = i + 1; j < n; j++){
+                if(data[j] < data[min_index]){
+                    min_index = j;
+                }
+            }
+            int temp = data[i];
+            data[i] = data[min_index];
+            data[min_index] = temp;
+        }
     /* 結果を表示する */
     for (int i = 0; i < n; i++) {
         printf("%d ", data[i]);
