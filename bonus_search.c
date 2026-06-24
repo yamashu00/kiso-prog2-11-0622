@@ -50,8 +50,23 @@
 
 int main(void) {
     int answer = 737;  /* ← 好きな値に変えてよい（1〜1000） */
+    int number;
+    int count = 0;
 
-    /* ここに実装する */
+    while(number != answer){
+        printf("予想： ");
+        scanf("%d", &number);
+        if(number < answer){
+            printf("小さい\n");
+            count++;
+        }else if(number > answer){
+            printf("大きい\n");
+            count++;
+        }else{
+            printf("正解！ %d回で当てました\n", count + 1);
+            break;  
+        };
+    }
 
     return 0;
 }

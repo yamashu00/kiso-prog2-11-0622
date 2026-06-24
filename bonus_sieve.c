@@ -50,6 +50,22 @@
 
 int main(void) {
 
+    int count = 2;
+    while(count <= 1000){
+        int is_prime = 1;
+        for(int i = 2; i * i <= count; i++){
+            if(count % i == 0){
+                is_prime = 0;
+                break;
+            }
+        }
+        if(is_prime){
+            printf("%d ", count);
+        }
+        count++;
+
+    }  // 1=素数候補、0=素数でない
+
     /* ここに実装する */
 
     return 0;
