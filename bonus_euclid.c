@@ -47,17 +47,34 @@
  * ─────────────────────────────────────────────────────────
  */
 
-// 自分の名前: ________________
+// 自分の名前: 八幡咲良
 
 #include <stdio.h>
 
 int main(void) {
     int a = 252;
     int b = 105;
+    int result;
 
     /* ここに実装する */
 
-    /* printf("GCD(%d, %d) = %d\n", 252, 105, result); */
+    // パターンB: ユークリッドの互除法（ループ版）
+    // 元の値を保存しておく（後でLCMに使うため）
+    int orig_a = a;
+    int orig_b = b;
+
+    while (b != 0) {
+        int r = a % b;   // a を b で割った余り
+        a = b;
+        b = r;
+    }
+    result = a;   // b が 0 になったときの a が GCD
+
+    printf("GCD(%d, %d) = %d\n", orig_a, orig_b, result);
+
+    // パターンD: 最小公倍数（LCM）
+    int lcm = orig_a / result * orig_b;   // 先に割ってオーバーフロー対策
+    printf("LCM(%d, %d) = %d\n", orig_a, orig_b, lcm);
 
     return 0;
 }
